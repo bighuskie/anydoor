@@ -1,0 +1,26 @@
+{
+    "name": "anydoor",
+    "version": "1.0.0",
+    "description": "Tiny NodeJS Web Server",
+    "main": "build/index.js",
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^13.7.4",
+        "babel-eslint": "^10.0.3",
+        "chalk": "^3.0.0",
+        "eslint": "^6.8.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bighuskie/anydoor.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/bighuskie/anydoor/issues"
+    },
+    "homepage": "https://github.com/bighuskie/anydoor#readme"
+}
