@@ -1,14 +1,15 @@
 const http = require("http");
-const config = require("./config/defalutConfig");
+const { hostname, port, rootUrl } = require("./config/defalutConfig");
 const chalk = require("chalk");
+const path = require("path");
+const router = require("./helpers/router");
 
 const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "text/plain");
-    res.end("node.js");
+    const filePath = path.join(rootUrl, req.url);
+    router(req, res, filePath);
 });
 
-server.listen(config.port, config.hostname, () => {
-    const address = `http://${config.hostname}:${config.port}/`;
+server.listen(port, hostname, () => {
+    const address = `http://${hostname}:${port}/`;
     console.info(`Server running at ${chalk.green(address)}`);
 });
