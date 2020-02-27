@@ -11,9 +11,9 @@ npm install anydoor -g
 ```
 anydoor # 把当前文件夹当作静态资源服务器根目录
 
-anydoor -p 9090 设置服务器端口号
+anydoor -p 9090 # 设置服务器端口号
 
-anydoor -h localhost 设置host为localhost
+anydoor -h localhost # 设置host为localhost
 
-anydoor -d /usr 设置根目录为/usr
+anydoor -d /usr # 设置根目录为/usr
 ```

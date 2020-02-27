@@ -2,7 +2,6 @@ const fs = require("fs");
 const { promisify } = require("util");
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
-const { rootUrl, compress } = require("../config/defalutConfig");
 
 const path = require("path");
 const handlebars = require("handlebars");
@@ -15,7 +14,7 @@ const COMPRESS = require("../helpers/compress");
 const RANGE = require("../helpers/range");
 const ISCACHE = require("../helpers/cache");
 
-module.exports = async (req, res, filePath) => {
+module.exports = async (req, res, filePath, config) => {
   try {
     const stats = await stat(filePath);
     if (stats.isFile()) {
@@ -40,13 +39,13 @@ module.exports = async (req, res, filePath) => {
           end
         });
       }
-      if (filePath.match(compress)) {
+      if (filePath.match(config.compress)) {
         rs = COMPRESS(rs, req, res);
       }
       rs.pipe(res);
     } else if (stats.isDirectory()) {
       const files = await readdir(filePath);
-      const dir = path.relative(rootUrl, filePath);
+      const dir = path.relative(config.rootUrl, filePath);
       const data = {
         title: path.basename(filePath),
         dir: dir ? `/${dir}` : "",
